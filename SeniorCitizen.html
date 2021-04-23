@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Senior Citizen</title>
+    <style>
+            body {
+                background-image: url(https://i.pinimg.com/originals/91/b6/bb/91b6bbe376bec2966cc8e88e0dd804c0.gif);
+            }
+        </style>
+</head>
+<body>
+    <center><h4>Senior Citizen</h4></center>
+    <br>
+    <center><p>If your Age is greater than or Equal to 60...Then you Can Select YES</p></center>
+    <br><br>
+    <form align = "center">
+        <b> Enter Date of Birth: <input type="date" id ="dob"> </b>  
+        <br>
+        <span id = "message"> </span> 
+        <br>
+        <button type="submit" onclick = "ageCalculator()"> Calculate age </button>
+        <br>
+        <h3 id="result"></h3>
+        <br><br>
+        <b>Final Total Charge For Your Journey is <span id = "finalcharge"></span>
+        <br><br>
+        <center><a href = "Confirm.html">Click Here to Confirm Your Journey</a></center>
+    </form>
+    
+    <script>
+    function ageCalculator() {  
+        event.preventDefault();
+        var userinput = document.getElementById("dob").value;  
+        var dob = new Date(userinput);  
+        var age;
+        if(userinput==null || userinput=='') {  
+          document.getElementById("message").innerHTML = "**Choose a date please!";    
+          return false;   
+        } 
+        else {    
+        //calculate month difference from current date in time  
+        var month_diff = Date.now() - dob.getTime();  
+          
+        //convert the calculated difference in date format  
+        var age_dt = new Date(month_diff);   
+          
+        //extract year from date      
+        var year = age_dt.getUTCFullYear();  
+          
+        //now calculate the age of the user  
+        age = Math.abs(year - 1970);  
+          
+        //display the calculated age  
+        return document.getElementById("result").innerHTML = "Age is: " + age + " years. ";
+        }  
+        check(age);
+
+        function check(age){
+        if(age >= 60){
+            let totalPrice = localStorage.getItem("TotalCharge");
+            let finalPrice = totalPrice / 2;
+            localStorage.setItem("FinalPrice", finalPrice);
+            return document.getElementById("finalcharge").innerHTML = localStorage.getItem("FinalPrice");
+        }   
+        else{
+            let TotalPrice = localStorage.getItem("TotalCharge"); 
+            localStorage.setItem("FinalPrice", finalPrice);
+            document.getElementById("finalcharge").innerHTML = localStorage.getItem("FinalPrice");
+        }
+        
+        }  
+    }  
+    </script>  
+
+</body>
+</html>

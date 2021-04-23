@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Booking page</title>
+<style>
+        body {
+            background-image: url(https://i.pinimg.com/originals/91/b6/bb/91b6bbe376bec2966cc8e88e0dd804c0.gif);
+        }
+    </style>
+</head>
+<body>
+<h2><center>!!!...Select the Cab Type You Need...!!!</center></h2>
+
+<form align = "center" onsubmit = "type()">
+    <label for="cabtype">Select Cab Type You Need</label>
+    <select name="cars" id="cars">
+        <option disabled selected>select cab type</option>            
+        <option value="Mini">Mini</option>
+        <option value="Micro">Micro</option>
+        <option value="Prime">Prime</option>
+    </select> 
+    <br> <br> 
+    <label for="kilometer">Enter the Kilometers </label>
+    <input type="number" name="num" id="kilometer" placeholder="Kilometer"  required>
+    <br><br>
+    <input type="submit" onclick="type()" value="SUMBIT">
+    <br><br>
+    <b>Total amount for this ride is <span id="type"> </span></b>
+    <br><br>
+    <a href="GST_Calculation.html">GST Calculation</a>
+</form> 
+
+<script>
+    function type(){
+        event.preventDefault();
+        let kilometer = document.querySelector("#kilometer").value;
+        let cabtype = document.querySelector("#cars").value;
+        console.log(kilometer);
+        console.log(cabtype);
+        localStorage.setItem("cartype", cabtype);
+        check(kilometer, cabtype);
+       
+    }
+
+    function check(kilometer, cabtype) {
+        if (kilometer > 0) {
+            if (cabtype == "Mini") {
+                let Charge = kilometer * 10;
+                localStorage.setItem("Charge", Charge);
+                console.log(Charge);
+            } else if (cabtype == "Micro") {
+                let Charge = kilometer * 15;  
+                localStorage.setItem("Charge", Charge);
+                console.log(Charge);
+
+            } else if (cabtype == "Prime") {
+                let Charge = kilometer * 20;
+                localStorage.setItem("Charge", Charge);
+                console.log(Charge);
+            }
+            
+            document.querySelector("#type").innerHTML = localStorage.getItem("Charge");
+             
+        } else {
+            alert("Please enter a valid kilometer");
+        }
+    }
+
+</script>
+
+</body>
+</html>

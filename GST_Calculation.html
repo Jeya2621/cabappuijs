@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GST Calculation</title>
+    <style>
+            body {
+                background-image: url(https://i.pinimg.com/originals/91/b6/bb/91b6bbe376bec2966cc8e88e0dd804c0.gif);
+            }
+        </style>
+</head>
+<body>
+    <h2><b><center>!!!.....GST Calculation.....!!!</center></b></h2>
+    <br>
+    <p><center>10% GST Will Add to Your Amount</center></p>
+    <br>
+    <b><i><center>Amount Before Adding GST is <span id = "amt"></span></center></i></b>
+    <br><br>
+    <b><i><center> GST Amount is <span id = "gstcal"></span></center></i></b>
+    <br><br>
+    <b><i><center> Amount After Adding GST is <span id = "Total"></span></center></i></b>
+    <br><br>
+    <center><a href = "DateTime.html">Click Here to Select Your Journey Date and Time</a></center>
+</body>
+
+<script>
+    let amt = localStorage.getItem("Charge");
+    let gstcal = (amt * 10) / 100;
+    let Total = parseFloat(amt) + parseFloat(gstcal);
+    localStorage.setItem("GSTPrice", gstcal);
+    localStorage.setItem("TotalCharge", Total);
+    document.getElementById("amt").innerHTML = localStorage.getItem("Charge");
+    document.getElementById("gstcal").innerHTML = localStorage.getItem("GSTPrice");
+    document.getElementById("Total").innerHTML = localStorage.getItem("TotalCharge");
+</script>
+</html>

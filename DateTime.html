@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Journey Date and Time</title>
+    <style>
+            body {
+                background-image: url(https://i.pinimg.com/originals/91/b6/bb/91b6bbe376bec2966cc8e88e0dd804c0.gif);
+            }
+        </style>
+</head>
+<body>
+    <form align = "center" onsubmit = "check()">
+            <center><b><h2>!!!.....Select Date and Time for Journey.....!!!</h2></b></center>
+            <br><br>
+            <center><p><b>If your Time is between 17:00 and 19:00 then 1.25% of total charge will add to your Charge.., Due to Peak Hours</b></p></center>
+            <br><br>
+           <!--- <center><b><label for="Journey">Enter a date and time for Journey </label></b></center>
+            <br>
+            <center><input id="Journey" type="datetime-local" name="JourneyDateTime" required></center>
+            <br><br>
+            <center><input type="submit" onclick="check()" value="SUMBIT"></center>
+            <br><br>
+            <center><a href = "SeniorCitizen.html">Click Here to Continue....</a></center>-->
+            <label><b>Enter Journey Date</b></label>
+            <input type = "date" name = "jd" id = "jd" value = "JourneyDate" required />
+            <br><br>
+            <label><b>Enter Journey Time</b></label>
+            <input type = "time" name = "jt" id = "jt" value = "JourneyTime" required />
+            <br><br>
+            <input type="submit" onclick="check()" value="SUMBIT">
+            <br><br>
+            <b>Total amount for this ride during Peak Hours is <span id="check"> </span></b>
+            <br><br>
+            <a href="SeniorCitizen.html">Click Here to Continue...</a>
+    </form>
+    <br><br>
+   
+    <script>
+        function check(){
+        event.preventDefault();
+        let currentDate = new Date();
+        let currentTime = new Time();
+        let journeyDate = document.querySelector("#jd").value;
+        let journeyTime = document.querySelector("#jt").value;
+        let totalcharge = localStorage.getItem("TotalCharge");
+        checking(journeyDate, journeyTime)
+        
+        function checking(journeyDate, journeyTime){
+        if(journeyDate >= currentDate && journeyTime >= currentTime){
+            if(journeyTime >= "17:00" && journeyTime <= "19:00"){
+                    let peakCalculation = (totalcharge * 1.25) / 100;
+                    localStorage.setItem("peakCalculation", peakCalculation);
+                    console.log(peakCalculation);
+                }
+            document.querySelector("#check").innerHTML = localStorage.getItem("peakCalculation");
+            location.replace("SeniorCitizen.html");
+            }
+            else{
+                alert("Enter Correct Date and Time");
+                location.reload("DateTime.html");
+            }
+        }
+        }
+       // let currentDateTime = new DateTime();
+       // let journeydatetime = Journey;
+       // if(currentDateTime >= journeydatetime){
+       //     location.replace("SeniorCitizen.html");
+       // }
+       // else{
+       //    alert("Give Correct Date or Time");
+       //    location.reload("DateTime.html");
+       // }
+    </script>
+
+</body>
+</html>

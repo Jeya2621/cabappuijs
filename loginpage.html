@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+<style>
+    body {
+        background-image: url(https://i.pinimg.com/originals/91/b6/bb/91b6bbe376bec2966cc8e88e0dd804c0.gif);
+    }
+</style>
+</head>
+
+<body>
+<h1><center>!!!......Login Form......!!!</center></h1>
+<br><br>
+<form  align = "center" method="post">
+    <label for="username">Enter Your username:</label>
+    <input type="text" name="username" id="username" placeholder="Enter UserName" required />
+    <br>
+    <br> 
+    <label for="passwrd">Enter Password: </label> 
+    <input type="password" name="password" id="password" placeholder="Enter Password" required /> 
+    <br>
+    <br> 
+    <label for="gender"> Gender: </label>
+    <input type="radio" id="male" name="gender" value="male" /> 
+    <label for="male">Male</label> 
+    <input type="radio" id="female" name="gender" value="female" /> 
+    <label for="female">Female</label>
+    <input type="radio" id="other" name="gender" value="other" /> 
+    <label for="other">Other</label>
+    <br><br><br>
+    <input type="Submit" onclick="login()" value="submit">
+    <button type = "button" onclick="hello()">click me</button>
+</form>
+
+<script>
+
+    function login(){
+        event.preventDefault();
+       // alert("Login Button Clicked");
+        let username = document.querySelector("#username").value;
+       // alert("Username :"+username);
+        if(username == "admin" && username.length > 3){
+            let password = document.querySelector("#password").value;
+            if(password == "jeya123" && password.length >6){
+            alert("Successfully Logged In");
+            location.replace("cabtypes.html");
+        }
+        else{
+            alert("Enter Correct Password");
+            location.reload("loginpage.html");
+        }
+        }
+        else{
+            alert("Invalid Username");
+            location.reload("loginpage.html");
+        }       
+    }
+
+    function hello(){
+        alert("Hello");
+    }
+</script>
+
+</body>
+</html>
